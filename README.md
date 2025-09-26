@@ -1,24 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CRM Test Application
+
+This is a client management application built with Next.js, Prisma, and PostgreSQL.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (version 18 or later)
+- Docker (for PostgreSQL database)
+- pnpm (recommended) or npm
+
+### Setup Database
+
+First, start the PostgreSQL database:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm start:db
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start a PostgreSQL instance in a Docker container.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a `.env.local` file in the root directory with:
+
+```
+DATABASE_URL="postgresql://postgres@localhost:5432/postgres?schema=public"
+```
+
+### Install Dependencies
+
+```bash
+pnpm install
+```
+
+### Database Setup
+
+Run the Prisma migrations to set up your database schema:
+
+```bash
+pnpm prisma:migrate:local
+```
+
+Generate the Prisma client:
+
+```bash
+pnpm prisma:generate:local
+```
+
+### Run Development Server
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
 ## Learn More
 
