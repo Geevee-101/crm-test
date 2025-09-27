@@ -171,7 +171,7 @@ export default function AddClientForm() {
                         </SelectItem>
                       ))}
                       {users.length === 0 && !isLoadingUsers && (
-                        <SelectItem value="" disabled>
+                        <SelectItem value="no-users" disabled>
                           No users found
                         </SelectItem>
                       )}
