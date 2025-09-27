@@ -30,6 +30,15 @@ export const columns: ColumnDef<ClientListing>[] = [
     cell: ({ row }) => {
       const date = row.getValue("createdAt") as Date;
       return date.toISOString().split('T')[0]; // YYYY-MM-DD format
-    }
+    },
+    filterFn: (row, id, value) => {
+      if (!value) return true;
+      const dateStr = value as string;
+      const rowDate = row.getValue(id) as Date;
+      const formattedRowDate = rowDate.toISOString().split('T')[0]; // YYYY-MM-DD format
+      
+      // Check if the formatted date includes the filter string (for partial matches)
+      return formattedRowDate.includes(dateStr);
+    },
   },
 ]

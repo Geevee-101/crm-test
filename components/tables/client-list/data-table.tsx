@@ -62,7 +62,7 @@ export function DataTable<TData extends ClientListing, TValue>({
             onValueChange={(value) => table.getColumn("status")?.setFilterValue(value)}
           />
           <Input
-            placeholder="Date..."
+            placeholder="Date (YYYY-MM-DD)..."
             value={(table.getColumn("createdAt")?.getFilterValue() as string) ?? ""}
             onChange={(e) => table.getColumn("createdAt")?.setFilterValue(e.target.value)}
             className="w-64"
